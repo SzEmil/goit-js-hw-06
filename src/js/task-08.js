@@ -2,8 +2,6 @@
 
 const loginForm = document.querySelector(".login-form");
 
-const loginBtn = loginForm.querySelector("button");
-console.log(loginBtn);
 
 const formHandler = (event) => {
   event.preventDefault();
@@ -11,7 +9,7 @@ const formHandler = (event) => {
     elements: { email, password },
   } = event.currentTarget;
   if (email.value === "" || password.value === "") {
-    alert("dzbanie jak ty chcesz sie zalogować bez maila czy hasła");
+    alert("Musisz podać email oraz hasło kolego!");
   } else {
     const loginData = {
       email: email.value,
@@ -22,4 +20,4 @@ const formHandler = (event) => {
   }
 };
 
-loginBtn.addEventListener("submit", formHandler);
+loginForm.addEventListener("submit", formHandler);
