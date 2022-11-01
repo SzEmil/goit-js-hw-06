@@ -3,8 +3,6 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-let value = 0;
-
 const inputValue = document.querySelector("#controls > input");
 const createBtn = document.querySelector(`[data-create]`);
 const destroyBtn = document.querySelector(`[data-destroy]`);
@@ -12,6 +10,8 @@ const boxes = document.querySelector("#boxes");
 
 inputValue.value = 0;
 let boxDone = 0;
+let value = 0;
+
 const inputValueHandler = (event) => {
   value = Number(event.target.value);
 };
