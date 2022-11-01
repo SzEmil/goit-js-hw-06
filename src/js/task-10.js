@@ -19,16 +19,29 @@ const inputValueHandler = (event) => {
 const createBtnHandler = () => {
   let n = 30;
 
-  for (let i = 0; i < value; i++) {
-    const box = document.createElement("div");
-    box.style.height = n + "px";
-    box.style.width = n + "px";
-    box.style.backgroundColor = getRandomHexColor();
-    boxes.append(box);
-    n += 10;
+  if (
+    value < Number(inputValue.getAttribute("min")) ||
+    value > Number(inputValue.getAttribute("max"))
+  ) {
+    alert(
+      `Wprowadzona wartość ${value} musi mieścić się w zakresie <${inputValue.getAttribute(
+        "min"
+      )} - ${inputValue.getAttribute("max")}>`
+    );
+    value = 0;
+    inputValue.value = 0;
+  } else {
+    for (let i = 0; i < value; i++) {
+      const box = document.createElement("div");
+      box.style.height = n + "px";
+      box.style.width = n + "px";
+      box.style.backgroundColor = getRandomHexColor();
+      boxes.append(box);
+      n += 10;
+    }
+    inputValue.value = 0;
+    value = 0;
   }
-  inputValue.value = 0;
-  value = 0;
 };
 
 const destroyBtnHandler = () => {
