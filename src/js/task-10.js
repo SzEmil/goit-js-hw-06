@@ -52,6 +52,7 @@ const destroyBtnHandler = () => {
   } else {
     const destroyDiv = boxes.querySelectorAll("div");
     destroyDiv.forEach((item) => item.remove());
+    boxDone = 0;
   }
 };
 
