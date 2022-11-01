@@ -11,7 +11,7 @@ const destroyBtn = document.querySelector(`[data-destroy]`);
 const boxes = document.querySelector("#boxes");
 
 inputValue.value = 0;
-
+let boxDone = 0;
 const inputValueHandler = (event) => {
   value = Number(event.target.value);
 };
@@ -29,6 +29,7 @@ const createBtnHandler = () => {
       )} - ${inputValue.getAttribute("max")}>`
     );
     value = 0;
+
     inputValue.value = 0;
   } else {
     for (let i = 0; i < value; i++) {
@@ -38,6 +39,7 @@ const createBtnHandler = () => {
       box.style.backgroundColor = getRandomHexColor();
       boxes.append(box);
       n += 10;
+      boxDone += 1;
     }
     inputValue.value = 0;
     value = 0;
@@ -45,8 +47,12 @@ const createBtnHandler = () => {
 };
 
 const destroyBtnHandler = () => {
-  const destroyDiv = boxes.querySelectorAll("div");
-  destroyDiv.forEach((item) => item.remove());
+  if (boxDone < Number(inputValue.getAttribute("min"))) {
+    alert(`Aktualnie nie ma bloków do destrukcji`);
+  } else {
+    const destroyDiv = boxes.querySelectorAll("div");
+    destroyDiv.forEach((item) => item.remove());
+  }
 };
 
 inputValue.addEventListener("input", inputValueHandler);
